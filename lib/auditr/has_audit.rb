@@ -71,7 +71,7 @@ module Auditr
       def create_audit_entry(severity, event, options = {})
         data = {
           :event     => event ||= 'other',
-          :entry     => if options[:entry] ? options[:entry] : nil,
+          :entry     => options.has_key?(:entry) ? options[:entry] : nil,
           :severity  => severity ||= 'info',
           :user      => Auditr.current_user
         }
