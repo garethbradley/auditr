@@ -1,4 +1,5 @@
 require "auditr/version"
+require "auditr/controller"
 require "auditr/has_audit"
 
 module Auditr
