@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Auditr::VERSION
   spec.authors       = ["Gareth Bradley"]
   spec.email         = ["gb@garethbradley.co.uk"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "An auditing gem that allows notes to be saved against models"
+  spec.summary       = "An auditing gem that allows notes to be saved against models"
   spec.homepage      = ""
   spec.license       = "MIT"
 
