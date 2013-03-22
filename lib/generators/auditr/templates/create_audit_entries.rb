@@ -5,10 +5,10 @@ class CreateAuditEntries < ActiveRecord::Migration
       t.integer  :item_id,   :null => false
       t.string   :event,     :null => false
       t.string   :entry,
-      t.string   :user
-      t.string   :severity
-      t.text     :object
-      t.text     :changes
+      t.string   :user,
+      t.string   :severity,
+      t.text     :object,
+      t.text     :changes,
       t.datetime :created_at
     end
     add_index :audit_entries, [:item_type, :item_id]
