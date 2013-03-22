@@ -4,6 +4,12 @@ require "auditr/has_audit"
 
 module Auditr
 
+  # Returns `true` if Auditr is on, `false` otherwise.
+  # Auditr is enabled by default.
+  def self.enabled?
+    true
+  end
+
   # Returns `true` if Auditr is enabled for the request, `false` otherwise.
   #
   # See `Auditr::Controller#auditr_enabled_for_controller`.
