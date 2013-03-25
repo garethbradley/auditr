@@ -21,7 +21,12 @@ class AuditEntry < ActiveRecord::Base
   end
 
   def user_object
-    au = AdminUser.find(user)
+    begin
+      au = AdminUser.find(user)
+      return au
+    rescue
+      return nil
+    end
   end
 
 end
