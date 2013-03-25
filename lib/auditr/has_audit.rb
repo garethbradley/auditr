@@ -157,6 +157,30 @@ module Auditr
         unless_condition = self.class.auditr_options[:unless]
         (if_condition.blank? || if_condition.call(self)) && !unless_condition.try(:call, self)
       end
+
+      def child_audit_entries
+        # this would return a hash of all `belongs_to` reflections, in this case:
+        # { :foo => (the Foo Reflection), :bar => (the Bar Reflection) }
+        associations = class.reflections.collect{|a, b| b.class_name if [:has_many, :has_one].include? b.macro}.compact 
+        child_audit_entries = []
+
+        associations.each do |association|
+          begin
+            child_audit_entries << send(association.last.plural_name).audit_entries
+          rescue
+          end
+        end
+
+        child_audit_entries.sort{|ae1,ae2| ae1.id <=> ae2.id}
+      end
+
+      def self_and_child_audit_entries
+        self_and_child_audit_entries = audit_entries
+        self_and_child_audit_entries << child_audit_entries
+
+        self_and_child_audit_entries.sort{|ae1,ae2| ae1.id <=> ae2.id}
+      end
+
     end
 
   end
