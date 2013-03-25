@@ -19,4 +19,9 @@ class AuditEntry < ActiveRecord::Base
   def self.destroys
     where :event => 'destroy'
   end
+
+  def user_object
+    au = AdminUser.find(user)
+  end
+
 end
