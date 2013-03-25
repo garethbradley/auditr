@@ -1,6 +1,7 @@
 require "auditr/version"
 require "auditr/controller"
 require "auditr/has_audit"
+require "auditr/audit_entry"
 
 module Auditr
 
