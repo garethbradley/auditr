@@ -105,7 +105,7 @@ module Auditr
             :entry     => 'Record updated',
             :severity  => 'info',
 #           :object    => object_to_string(item_before_change),
-#           :changes   => Auditr.serializer.dump(changes_for_paper_trail)
+#           :object_changes   => Auditr.serializer.dump(changes_for_paper_trail)
             :user      => Auditr.current_user
           }
 
