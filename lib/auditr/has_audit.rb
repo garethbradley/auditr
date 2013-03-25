@@ -82,7 +82,7 @@ module Auditr
       def child_audit_entries
         # this would return a hash of all `belongs_to` reflections, in this case:
         # { :foo => (the Foo Reflection), :bar => (the Bar Reflection) }
-        associations = self.reflections.select{|s,r| [:has_many, :has_one].include? r.macro}.compact 
+        associations = self.reflections.select{|s,r| [:has_many, :has_one].include? r.macro}
         child_audit_entries = []
 
         associations.each do |association|
