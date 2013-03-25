@@ -2,7 +2,7 @@ class AuditEntry < ActiveRecord::Base
   belongs_to :item, :polymorphic => true
 
   validates_presence_of :event, :severity
-  attr_accessible :item_type, :item_id, :event, :entry, :user, :object, :changes
+  attr_accessible :item_type, :item_id, :event, :entry, :user, :object, :changes, :severity
 
   def self.with_item_keys(item_type, item_id)
     where :item_type => item_type, :item_id => item_id
