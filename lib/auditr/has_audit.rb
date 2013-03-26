@@ -89,7 +89,7 @@ module Auditr
           begin
         #    child_audit_entries << send(association.last.plural_name).audit_entries
             send(association.last.plural_name).each do |child_record|
-              child_audit_entries.merge(child_record.audit_entries.scoped)
+              child_audit_entries |= child_record.audit_entries.scoped
             end
           rescue
           end
