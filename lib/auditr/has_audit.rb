@@ -83,13 +83,13 @@ module Auditr
         # this would return a hash of all `belongs_to` reflections, in this case:
         # { :foo => (the Foo Reflection), :bar => (the Bar Reflection) }
         associations = self.reflections.select{|s,r| [:has_many, :has_one].include? r.macro}
-        child_audit_entries = self.audit_entries.scoped
+        child_audit_entries = self.audit_entries
 
         associations.each do |association|
           begin
         #    child_audit_entries << send(association.last.plural_name).audit_entries
             send(association.last.plural_name).each do |child_record|
-              child_audit_entries |= child_record.audit_entries.scoped
+              child_audit_entries |= child_record.audit_entries
             end
           rescue
           end
