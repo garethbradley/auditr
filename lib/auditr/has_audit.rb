@@ -88,7 +88,9 @@ module Auditr
         associations.each do |association|
           begin
         #    child_audit_entries << send(association.last.plural_name).audit_entries
-            child_audit_entries.merge(send(association.last.plural_name).audit_entries.scoped)
+            send(association.last.plural_name).each do |child_record|
+              child_audit_entries.merge(child_record.audit_entries.scoped)
+            end
           rescue
           end
         end
@@ -97,10 +99,11 @@ module Auditr
       end
 
       def self_and_child_audit_entries
-        self_and_child_audit_entries = audit_entries
-        self_and_child_audit_entries << child_audit_entries
+        #self_and_child_audit_entries = audit_entries
+        #self_and_child_audit_entries << child_audit_entries
 
-        self_and_child_audit_entries.sort{|ae1,ae2| ae1.id <=> ae2.id}
+        #self_and_child_audit_entries.sort{|ae1,ae2| ae1.id <=> ae2.id}
+        child_audit_entries
       end
 
       private
