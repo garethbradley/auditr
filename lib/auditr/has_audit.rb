@@ -89,7 +89,7 @@ module Auditr
           begin
         #    child_audit_entries << send(association.last.plural_name).audit_entries
             send(association.last.plural_name).each do |child_record|
-              child_audit_entries |= child_record.audit_entries
+              child_audit_entries = (child_audit_entries or child_record.audit_entries) unless child_record.audit_entries.blank?
             end
           rescue
           end
