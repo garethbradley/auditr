@@ -95,6 +95,7 @@ module Auditr
           end
         end
 
+        return child_audit_entries
         #child_audit_entries.sort{|ae1,ae2| ae1.id <=> ae2.id}
       end
 
