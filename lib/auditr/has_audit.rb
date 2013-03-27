@@ -93,7 +93,7 @@ module Auditr
         #    child_audit_entries << send(association.last.plural_name).audit_entries
             send(association.last.plural_name).each do |child_record|
 #              child_audit_entries = (child_audit_entries or child_record.audit_entries) unless child_record.audit_entries.blank?         
-              query.or(t[:item_type].eq(child_record.class.name).and(t[:item_id].eq(child_record.id)))
+              query = query.or(t[:item_type].eq(child_record.class.name).and(t[:item_id].eq(child_record.id)))
               p "Updated query due to (#{child_record.class.name} with id #{child_record.id}): #{query.to_sql}"
             end
 
