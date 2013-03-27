@@ -98,7 +98,7 @@ module Auditr
           rescue
           end
         end
-        raise query.to_sql
+        #raise query.to_sql
 
         return AuditEntry.where(query)
 
