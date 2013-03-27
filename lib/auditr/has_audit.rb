@@ -127,7 +127,7 @@ module Auditr
         if switched_on?
           data = {
             :event     => 'create',
-            :entry     => "#{self.class.name} created",
+            :entry     => "#{self.class.name.titleize} created",
             :severity  => 'info',
             :user      => Auditr.current_user
           }
@@ -140,7 +140,7 @@ module Auditr
         if switched_on?
           data = {
             :event     => 'update',
-            :entry     => "#{self.class.name} updated",
+            :entry     => "#{self.class.name.titleize} updated",
             :severity  => 'info',
 #           :object    => object_to_string(item_before_change),
 #           :object_changes   => Auditr.serializer.dump(changes_for_paper_trail)
@@ -156,7 +156,7 @@ module Auditr
           audit_entry_class.create merge_metadata(:item_id   => self.id,
                                               :item_type => self.class.base_class.name,
                                               :event     => 'destroy',
-                                              :entry     => "#{self.class.name} deleted",
+                                              :entry     => "#{self.class.name.titleize} deleted",
                                               :severity  => 'warning',
 #                                              :object    => object_to_string(item_before_change),
                                               :user      => Auditr.current_user)
