@@ -86,6 +86,7 @@ module Auditr
 #        child_audit_entries = self.audit_entries
         t = AuditEntry.arel_table
         query = t[:item_type].eq(self.class.name).and(t[:item_id].eq(self.id))
+        p "Initial query: #{query.to_sql}"
 
         associations.each do |association|
           begin
@@ -93,12 +94,14 @@ module Auditr
             send(association.last.plural_name).each do |child_record|
 #              child_audit_entries = (child_audit_entries or child_record.audit_entries) unless child_record.audit_entries.blank?         
               query.or(t[:item_type].eq(child_record.class.name).and(t[:item_id].eq(child_record.id)))
+              p "Updated query due to (#{child_record.class.name} with id #{child_record.id}): #{query.to_sql}"
             end
 
           rescue
           end
         end
         #raise query.to_sql
+        p "Final query: #{query.to_sql}"
 
         return AuditEntry.where(query)
 
