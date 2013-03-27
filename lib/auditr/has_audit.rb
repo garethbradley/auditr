@@ -84,7 +84,7 @@ module Auditr
         # { :foo => (the Foo Reflection), :bar => (the Bar Reflection) }
         associations = self.reflections.select{|s,r| [:has_many, :has_one].include? r.macro}
 #        child_audit_entries = self.audit_entries
-        table = AuditEntry.arel_table
+        t = AuditEntry.arel_table
         query = t[:item_type].matches(self.class).and(t[:item_id].matches(self.id))
 
         associations.each do |association|
