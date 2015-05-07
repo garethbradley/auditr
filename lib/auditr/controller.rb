@@ -48,6 +48,10 @@ module Auditr
 
     private
 
+    def audit_params
+      params.require(:audit_entry).permit(:item_type, :item_id, :event, :entry, :user, :object, :changes, :severity)
+    end
+
     # Tells Auditr whether versions should be saved in the current request.
     def set_auditr_enabled_for_controller
       ::Auditr.enabled_for_controller = auditr_enabled_for_controller
