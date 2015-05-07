@@ -1,8 +1,8 @@
 module Auditr
   module Model
+    extend ActiveSupport::Concern
 
-    def self.included(base)
-      base.send :extend, ClassMethods
+    included do
     end
 
 
@@ -198,6 +198,8 @@ module Auditr
 
 
     end
+    
+    ActiveRecord::Base.send :include, Auditr::Model
 
   end
 end
