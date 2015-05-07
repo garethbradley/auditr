@@ -53,8 +53,7 @@ module Auditr
 
         has_many self.audit_entries_association_name,
                  :class_name => audit_entry_class_name,
-                 :as         => :item,
-                 -> { :order "created_at ASC" }
+                 :as         => :item, -> { :order "created_at ASC" }
                  
 
         after_create  :record_create, :if => :save_entry? if !options[:on] || options[:on].include?(:create)
