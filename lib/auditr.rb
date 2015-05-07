@@ -62,10 +62,10 @@ module Auditr
 
 end
 
-ActiveSupport.on_load(:active_record) do
-  include Auditr::Model
-end
+# ActiveSupport.on_load(:active_record) do
+#   include Auditr::Model
+# end
 
-ActiveSupport.on_load(:action_controller) do
-  include Auditr::Controller
-end
+# ActiveSupport.on_load(:action_controller) do
+#   include Auditr::Controller
+# end
