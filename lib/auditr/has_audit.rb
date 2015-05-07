@@ -83,7 +83,7 @@ module Auditr
       def child_audit_entries
         # this would return a hash of all `belongs_to` reflections, in this case:
         # { :foo => (the Foo Reflection), :bar => (the Bar Reflection) }
-        associations = self.reflections.select{|s,r| [:has_many, :has_one].include? r.macro}
+        associations = self.class.reflections.select{|s,r| [:has_many, :has_one].include? r.macro}
 #        child_audit_entries = self.audit_entries
         t = AuditEntry.arel_table
         query = t[:item_type].eq(self.class.name).and(t[:item_id].eq(self.id))
