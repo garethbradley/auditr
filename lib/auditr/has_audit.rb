@@ -66,7 +66,7 @@ module Auditr
 
     # Wrap the following methods in a module so we can include them only in the
     # ActiveRecord models that declare `has_paper_trail`.
-    module InstanceMethods
+    module LocalInstanceMethods
 
       def create_audit_entry(severity, event, options = {})
         data = {
